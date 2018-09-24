@@ -79,12 +79,7 @@ insertionSort []     = []
 insertionSort [x]    = [x]
 insertionSort (x:xs) = insert x (insertionSort xs)
 
--- select :: Ord a => a -> [a] -> (a, [a])
--- select num [] = (num, [])
--- select num (x:xs)
---   | x < num = select x (num:xs)
---   | otherwise = (num, x: snd(select num xs))
-
+--TODO add description
 remove :: Eq a => a -> [a] -> [a] -> [a]
 remove x (y:ys) z
     | x == y    = z ++ ys
