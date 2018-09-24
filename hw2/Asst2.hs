@@ -20,7 +20,7 @@ find a (x:xs)
 
 --retrieves an element by index from the list
 index :: Integer -> [a] -> Maybe a
-index _ [] = Nothing
+index _ []     = Nothing
 index 0 (x:xs) = Just x
 index a (x:xs)
     | a < 0     = Nothing
@@ -141,7 +141,7 @@ partition a (b:bs)
 
 --sorts a list using quick sort, returns a list in non-decreasing order
 quickSort :: Ord a => [a] -> [a]
-quickSort [] = []
+quickSort []     = []
 quickSort (x:xs) = (quickSort first) ++ [x] ++ (quickSort second)
   where first  = fst(partition x xs)
         second = snd(partition x xs)
