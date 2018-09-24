@@ -79,7 +79,8 @@ insertionSort []     = []
 insertionSort [x]    = [x]
 insertionSort (x:xs) = insert x (insertionSort xs)
 
---TODO add description
+--Given an element to be removed, and a list. 
+--Delete the first element seen in the list if it exists, otherwise do nothing.
 remove :: Eq a => a -> [a] -> [a] -> [a]
 remove x (y:ys) z
     | x == y    = z ++ ys
