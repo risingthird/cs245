@@ -48,12 +48,14 @@ lex1 c (x:xs)
   | c == '"'  = lexString [c] (x:xs)
   | otherwise = error "Something is wrong here"
 
+-- take a string and return a string literal we have checked and the rest of the input
 lexString :: String -> String -> (String, String)
 lexString c [] = error "Unterminated String ^ ^"
 lexString c (x:xs)
   | x /= '"' || (x == '"' && "\\" `isSuffixOf` c) = lexString (c ++ [x]) xs
-  | otherwise = (c ++ [x], xs)
+  | otherwise                                     = (c ++ [x], xs)
 
+-- -- take a string and return a char literal we have checked and the rest of the input
 lexChar :: String -> String -> (String, String)
 lexChar c [] = error "Unterminated Char"
 lexChar c (x:y:z:p:q:xs)
@@ -79,6 +81,7 @@ lexChar c (x:y:xs)
   | y == '\'' && x /= '\'' && x /= '\n' && x /= '\r' = (c ++[x,y],xs) --excluding LF and CR
   | otherwise = error "Errorous input4"
 
+-- lex a numeral literal
 lexNum :: String -> String -> (String, String)
 lexNum c [] = (c,[])
 lexNum [c] (x:xs) -- c must be a digit here
@@ -143,6 +146,7 @@ lexNum [c] (x:xs) -- c must be a digit here
         | isDigit x || x == '_' = lexDecimal (c ++ [x]) xs
         | otherwise  = (c, (x:xs))
 
+-- lex an identifier
 lexIdentifier :: String -> String -> (String, String)
 lexIdentifier c [] = (c, [])
 lexIdentifier c (x:xs) --c must be a letter
