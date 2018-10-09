@@ -1,7 +1,7 @@
 
-{- Name: Rosie Wang
+{- Name: Rosie Wang, Jiaping Wang, Nanda Bhushan
         File: Lexer.hs
-        Desc: A Java lexer
+        Desc: Asst3 Style
      -}
 module Main where
 import Data.Char
@@ -172,6 +172,8 @@ lexOSeperator x (n:ns)
     = ((x ++ [n]), ns)
   | otherwise = (x, (n:ns))
 
+-- Discard a prefix of the input string containing only whitespace, 
+-- and return a suffix of the input string that starts with a non-discardable character. 
 findToken :: String -> String
 findToken [] = []
 findToken (x:y:xs)
@@ -196,6 +198,7 @@ findToken (x:xs) --there is only one element
   | isSpace x = xs
   | otherwise = (x:xs)
 
+-- Uses lex1 to lex the first token and then recurs to lexJava to lex the rest.
 lexNoPrefix :: String -> [String]
 lexNoPrefix [] = []
 lexNoPrefix (x:xs) = ((fst (lex1 x xs)): lexJava (snd (lex1 x xs)))
