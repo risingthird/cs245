@@ -25,13 +25,58 @@ class Item {
   
   public Item() { 
     item_name = "default item";
-    val = 0
+    val = 0;
   }
   
   public Item(String name, int val) {
     this.item_name = name;
-    this.val = val
+    this.val = val;
   }
+}
+
+class Armor extends Item {
+  private int defense;
+  
+  public Armor() {
+    super();
+    defense = 0;
+  }
+  
+   public Armor(String name, int val, int defense) {
+    super(name, val);
+    defense = defense;
+  }
+}
+
+class Sword extends Item {
+  private int attack;
+  
+  public Sword() {
+    super();
+    attack = 0;
+  }
+  
+   public Sword(String name, int val, int attack) {
+    super(name, val);
+    defense = attack;
+  }
+}
+
+class Requirement {
+  HashMap<Item, Integer> mMap = null;
+  public Requirement() {
+    mMap = new HashMap<Item, Integer>();
+  }
+  
+  public void addNewRequirement(Item item, int amount) {
+    if (mMap.containsKey(item)) {
+      mMap.put(item, mMap.get(item) + amount);
+    }
+    else {
+      mMap.put(item, amount);
+    }
+  }
+   
 }
 
 ```
