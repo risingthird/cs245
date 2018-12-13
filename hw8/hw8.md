@@ -96,5 +96,26 @@ class Player {
 
 class Inventory<E> {
   HashMap<E, Integer> pack = null;
+  public Inventory() {
+    pack = new HashMap<E, Integer>();
+  }
+  
+  public void addItem(E item, int amount) {
+    if (pack.containsKey(item)) {
+      pack.put(item, mMap.get(item) + amount);
+    }
+    else {
+      pack.put(item, amount);
+    }  
+  }
+  
+  public void deleteItem(E item, int amount) {
+    if (pack.containsKey(item)) {
+      pack.put(item, mMap.get(item) - amount);
+    }
+    else {
+      System.out.println("Item does not exist");
+    }  
+  }
 }
 ```
