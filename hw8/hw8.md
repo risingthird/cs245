@@ -119,4 +119,4 @@ class Inventory<E> {
   }
 }
 ```
-- 
+- As our system gets bigger, it might be possible that we accidentally add something other than Items to users' backpacks or add strange requirements. However, since Java is a statically typed
