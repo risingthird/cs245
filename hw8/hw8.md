@@ -17,7 +17,7 @@ Miyamoto is our product manager, and is the one we want to convice.
 ## Argument
 In order to implement system, it's better for us to use Java instead of Python.
 
-First of all, as an object-oriented language, Java is suitable for the given scenario. Specifically speaking, the requirements of achievements have a clear hireachy based on the nature of the system itself. For instance, armors and weapons are subtypes of Items, each specific kind of monsters is a subtype of Monster. Let requirement be a class. Suppose for each requirement instance, there will be a HashMap storing specific requirements, that maps items to their required amount. Using polymorphism in Java, instead of having maps for each kind of item, we can have a general map that takes in multiple subtypes of item class as key. 
+- First of all, as an object-oriented language, Java is suitable for the given scenario. Specifically speaking, the requirements of achievements have a clear hireachy based on the nature of the system itself. For instance, armors and weapons are subtypes of Items, each specific kind of monsters is a subtype of Monster. Let requirement be a class. Suppose for each requirement instance, there will be a HashMap storing specific requirements, that maps items to their required amount. Using polymorphism in Java, instead of having maps for each kind of item, we can have a general map that takes in multiple subtypes of item class as key. 
 ```Java
 class Item {
   private String item_name;
