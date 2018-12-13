@@ -4,7 +4,7 @@
 ### Company 
 `Mintendo`, a start-up mobile-app company aims at offline games.
 ### Project
-An achievement system in the game called `Bright Souls`. Specifically, each achievement will be fulfilled as soon as players finish collecting required items, including armors, weapons, killed monsters, etc. Note that sub-achievements have the potential forming a larger achievement. Additionally, this system should have the ability of adding more achievements as the game itself updates.
+An achievement system in the game called `Bright Souls`. Specifically, each achievement will be fulfilled as soon as players finish collecting required items, including armors, weapons, killed monsters, etc. Note that sub-achievements have the potential forming a larger achievement. Additionally, this system should have the ability of adding more achievements as the game itself updates. There's also a need to build corresponding player system and inventory system.
 ### Our team
 Brad, an expert in Scala, has been in the game industry for more than 8 years.
 
@@ -17,8 +17,8 @@ Miyamoto is our product manager, and is the one we want to convice.
 ## Argument
 In order to implement system, it's better for us to use Java instead of Python.
 
-- First of all, as an object-oriented language, Java is suitable for the given scenario. Specifically speaking, the requirements of achievements have a clear hireachy based on the nature of the system itself. For instance, armors and weapons are subtypes of Items, each specific kind of monsters is a subtype of Monster. Let requirement be a class. Suppose for each requirement instance, there will be a HashMap storing specific requirements, that maps items to their required amount. Using polymorphism in Java, instead of having maps for each kind of item, we can have a general map that takes in multiple subtypes of item class as key. 
-> ```Java
+- First of all, as an object-oriented language, Java has polymorphism that is suitable for this scenario. Specifically speaking, the requirements of achievements have a clear hireachy based on the nature of the system itself. For instance, armors and weapons are subtypes of Items, each specific kind of monsters is a subtype of Monster. Let requirement be a class. Suppose for each requirement instance, there will be a HashMap storing specific requirements, that maps items to their required amount. Using polymorphism in Java, instead of having maps for each kind of item, we can have a general map that takes in multiple subtypes of item class as key. 
+```Java
 class Item {
   private String item_name;
   private int val;
@@ -80,4 +80,19 @@ class Requirement {
 }
 
 ```
+- What's more, owing to the Parametric polymorphism in Java, when designing inventory for players, instead of creating multiple types of inventory classes, we can have an inventory class that takes all kinds of items. By doing this, programmers can avoid large amount of similar codes, since all inventories will have exactly the same features, and will thus increase programmer efficiency. Consider the following code, note that this code snippet will use the same `Item` class from the previous code.
+```Java
+class Player {
+  String name = "";
+  Inventory<Item> mBackPack = null;
+  
+  public Player(String name, Inventory<Item> backpack) {
+    this.name = name;
+    mBackPack = backpack;
+  }
+}
 
+class Inventory<E> {
+
+}
+```
