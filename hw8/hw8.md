@@ -80,19 +80,21 @@ class Requirement {
 }
 
 ```
-- When designing inventory system, it is necessary to separate mission related items from general items, which results in two types of inventories. However, this will cause redundancy What's more, owing to the Parametric polymorphism in Java, when designing inventory for players, instead of creating multiple types of inventory classes, we can have an inventory class that takes all kinds of items. By doing this, programmers can avoid large amount of similar codes, since all inventories will have exactly the same features, and will thus increase programmer efficiency. Consider the following code, note that this code snippet will use the same `Item` class from the previous code.
+- When designing inventory system, it is necessary to separate mission related items from general items, which results in two types of inventories. However, this will cause redundancy in code since both inventories will have similar functions. Under such a circumstance, we can take the advantage `parametric polymorphism` in Java. Owing to `parametric polymorphism`, when designing inventory for players, instead of creating multiple types of inventory classes, we can have an inventory class that takes all kinds of items. By doing this, programmers can avoid redundancy, and will thus increase programmer efficiency. Consider the following code, note that this code snippet will use the same `Item` class from the previous code.
 ```Java
 class Player {
   String name = "";
   Inventory<Item> mBackPack = null;
+  Inventory<MissionItem> mMissionPack = null;
   
-  public Player(String name, Inventory<Item> backpack) {
+  public Player(String name, Inventory<Item> backpack, Inventory<MissionItem> missionpack) {
     this.name = name;
     mBackPack = backpack;
+    mMissionPack = missionpack;
   }
 }
 
 class Inventory<E> {
-
+  HashMap<E, Integer> pack = null;
 }
 ```
