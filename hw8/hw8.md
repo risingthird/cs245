@@ -1,5 +1,5 @@
 # Assignment	8:	The	Case	for	a	Programming	Language
-
+                                              Jiaping Wang
 ## Background
 ### Company 
 `Mintendo`, a start-up mobile-app company aims at offline games.
