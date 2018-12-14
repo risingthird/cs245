@@ -136,3 +136,5 @@ backpack.addItem("Cat", 1)  # This is also valid, since a python list can takes 
                             # However, when we try to iterate through the list and get the item, 
                             # it will return a String rather than an item
 ```
+## Conclusion
+In order to implement our project, we can take advantage of the polymorphism, generics, and static typed nature of Java not only to ensure  type safety but also to reduce code redundancy and thus increase our programmer efficiency. 
