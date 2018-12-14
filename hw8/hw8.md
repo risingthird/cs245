@@ -119,4 +119,19 @@ class Inventory<E> {
   }
 }
 ```
-- As our system gets bigger, it might be possible that we accidentally add something other than Items to users' backpacks or add strange requirements. However, since Java is a statically typed
+- As our system gets bigger, it might be possible that we accidentally add something other than Items to users' backpacks or add strange requirements. However, since Java is a statically typed language, this kind of error will be eliminated during compile time, and thus won't cause potential crash in our app. Consider the following code:
+```Java
+public static void main(String[] args) {
+  Inventory<Item> backpack = new Inventory<>();
+  // this will cause a compile time error, since we try to put a String rather than an item into the bag
+  backpack.addItem("Cat", 1);
+  backpack.addItem(new Sword("Cat", 10000, 1), 1); // this line is ok, since Sword object is a subtype of Item
+}
+```
+Now we want to take python as a counterexample. The following code shows the potential risks of dynamic type language:
+```Python
+backpack = Inventory() # Inventory class is just a list
+backpack.addItem(Sword("Cat", 10000, 1), 1) # this is valid
+backpack.addItem("Cat", 1)  # This is also valid, since a python list can takes all kinds of inputs. 
+                            # However, when we try to iterate through the list and get the item, it will return a String rather than an item
+```
