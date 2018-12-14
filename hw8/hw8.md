@@ -133,5 +133,6 @@ Now we want to take python as a counterexample. The following code shows the pot
 backpack = Inventory() # Inventory class is just a list
 backpack.addItem(Sword("Cat", 10000, 1), 1) # this is valid
 backpack.addItem("Cat", 1)  # This is also valid, since a python list can takes all kinds of inputs. 
-                            # However, when we try to iterate through the list and get the item, it will return a String rather than an item
+                            # However, when we try to iterate through the list and get the item, 
+                            # it will return a String rather than an item
 ```
